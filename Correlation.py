@@ -102,8 +102,11 @@ def analyse(x,y,time,win,res,maxl=30,dist=3.,barrierset=1/math.e,barrier=True):
            lags_c,c_c,line_c,b_c=plt.xcorr(corry,corrx, usevlines=False , maxlags=maxl, linestyle='solid', marker=None)
            #plt.close()
            
-           #get lag and corrcoef
-           cc1=np.max(c_c)
+           #get highest peak at right side
+           
+           mid=int(((len(c_c)-1)/2)) 
+           cc1=np.max(c_c[mid:])
+        
 #%%           
            lag1=np.where(c_c==cc1)
            lag1=lag1[0]
